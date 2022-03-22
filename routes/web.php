@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiSpoonacularController;
+use App\Http\Controllers\homeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/home', [homeController::class , 'index']);
+Route::get('/', [homeController::class , 'index']);
+Route::get('/ConsumirApi', [ApiSpoonacularController::class, 'index']);
