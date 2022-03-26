@@ -15,7 +15,7 @@ class ApiSpoonacular extends Model
         $urlPesquisa = 'ingredients=pasta,+cheese';
         $urlPesquisaTeste2 = 'ingredients=tofu,+tomatoe,+onion,+garlic';
 
-        $response = Http::get('https://api.spoonacular.com/recipes/findByIngredients?apiKey=320a743c596146fd8c714d8be6d67345&' . $urlPesquisaTeste2);
+        $response = Http::get('https://api.spoonacular.com/recipes/findByIngredients?apiKey=320a743c596146fd8c714d8be6d67345&vegan=true&instructionsRequired=true&analyzeInstructions&' . $urlPesquisaTeste2);
 
         $receitas = $response->json();
 
@@ -25,6 +25,13 @@ class ApiSpoonacular extends Model
             }
         } */
         return $receitas;
+    }
+
+    public function getInstructions($id){
+        $recepi = Http::get('https://api.spoonacular.com/recipes/' . $id . '/information?apiKey=320a743c596146fd8c714d8be6d67345');
+        $receita = $recepi->json();
+        
+        return $receita;        
     }
 
     

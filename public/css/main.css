@@ -7,3 +7,17 @@
     --VERDE_ESCURO:#84cd98;
     --AZUL: #043f47;
 }
+.card{
+    border: 1px solid var(--AZUL);
+    padding: 20px;
+    
+}
+.card img{
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+.card a{
+    
+}

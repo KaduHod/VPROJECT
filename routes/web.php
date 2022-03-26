@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiSpoonacularController;
 use App\Http\Controllers\homeController;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,33 @@ Route::get('/', function () {
 
 Route::get('/home', [homeController::class , 'index']);
 Route::get('/', [homeController::class , 'index']);
-Route::get('/ConsumirApi', [ApiSpoonacularController::class, 'index']);
+Route::get('/show/{id}',[homeController::class , 'showRecepi']);
+Route::get('/', [homeController::class , 'index']);
+/* Route::get('searchRecepis', function(){
+    $apiKey = 'apiKey=' . $_ENV['API_KEY_SPOONACULAR'];
+    $prefix = 'https://api.spoonacular.com/recipes/complexSearch?';
+    $diet = 'diet=vegan';
+    $ingredients = 'includeIngredients=Grains,';
+    $number = 'number=100'; 
+
+    $URL = $prefix .  $apiKey . '&' . $diet . "&"  . $ingredients . '&' . $number;
+    $response = Http::get($URL);
+    //dd($URL);
+    dd($response->json());
+
+    //$receitasVeganas = '';
+});  */
+Route::post('searchRecepis', [homeController::class , 'filter']);
+
+
+
+Route::get('ShowRecepiJSON/{id}', function($id){
+    $ingredientesVeganos = ["1. Beans", "2. Grains", "3. Tempeh", "4. Tofu", "5. Nuts",
+    "6. Dried fruits","7. Vegetable stock","8. Nutritional yeast", "9. Miso", "10. Tahini",
+    "11. Dried sea vegetables","12. coconut oil","14. Maple syrup", "15. Ground flax seeds"];
+
+    $recepi = Http::get('https://api.spoonacular.com/recipes/' . $id . '/information?apiKey=320a743c596146fd8c714d8be6d67345');
+    $receita = $recepi->json();
+    dd($receita);
+});
+

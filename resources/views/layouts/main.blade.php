@@ -42,6 +42,26 @@
             padding: 0;
             text-decoration: none;
         }
+        main{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            padding: 30px;
+        }
+        .section{
+            display: flex;
+            width: 100%;
+            height: fit-content;
+            margin: 10px 0px;
+        }
+        .center{
+            align-items: center;
+            justify-content: center;
+        }
+        .column{
+            flex-direction: column
+        }
     </style>
     
 </head>
