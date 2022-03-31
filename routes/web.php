@@ -24,20 +24,6 @@ Route::get('/home', [homeController::class , 'index']);
 Route::get('/', [homeController::class , 'index']);
 Route::get('/show/{id}',[homeController::class , 'showRecepi']);
 Route::get('/', [homeController::class , 'index']);
-/* Route::get('searchRecepis', function(){
-    $apiKey = 'apiKey=' . $_ENV['API_KEY_SPOONACULAR'];
-    $prefix = 'https://api.spoonacular.com/recipes/complexSearch?';
-    $diet = 'diet=vegan';
-    $ingredients = 'includeIngredients=Grains,';
-    $number = 'number=100'; 
-
-    $URL = $prefix .  $apiKey . '&' . $diet . "&"  . $ingredients . '&' . $number;
-    $response = Http::get($URL);
-    //dd($URL);
-    dd($response->json());
-
-    //$receitasVeganas = '';
-});  */
 Route::post('searchRecepis', [homeController::class , 'filter']);
 
 

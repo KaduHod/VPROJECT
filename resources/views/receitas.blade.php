@@ -3,7 +3,6 @@
 @section('content')
 
 @foreach ($receitas as $receita)
-
     <div class="card">
         <h1>{{$receita['title']}}</h1>
         <img src="{{$receita['image']}}" alt="">

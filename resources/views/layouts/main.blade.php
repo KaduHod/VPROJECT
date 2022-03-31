@@ -62,6 +62,66 @@
         .column{
             flex-direction: column
         }
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: 1px solid #ddd;
+  width: 14em;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.scroll, .ingredientes-content {
+  position: relative;
+  width:50px;
+  display: inline-block;
+}
+/* Dropdown Content (Hidden by Default) */
+.ingredientes-content {
+  display: block;
+  width: 14em;
+  background: #F0F8FF;
+  height: 200px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.input {
+    margin: 0 0 0 10px;
+}
+
+.ingredientes-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  height: 40%;
+  justify-content: left;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
     </style>
     
 </head>
@@ -117,6 +177,25 @@
             sidebar.classList.add('hiddenSidebar')
             return false
         }
+    </script>
+    <script>
+        console.log('Olá Mundo!');
+
+function filterFunction(){
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i=0; i < a.length; i++){
+        txtValue = a[i].textContent || a[i].innerText;
+        if(txtValue.toUpperCase().indexOf(filter) > -1){
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
     </script>
 </body>
 </html>
